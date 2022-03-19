@@ -1,5 +1,5 @@
-import './css/App.css';
-import Portfolio from './js/Portfolio';
+import '../css/App.css';
+import Portfolio from './Portfolio';
 
 function App() {
   const items = {
