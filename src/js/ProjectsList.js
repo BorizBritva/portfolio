@@ -1,18 +1,27 @@
 import PropTypes from 'prop-types';
 import ProjectsItem from './ProjectsItem';
+const shortid = require('shortid');
 
-function ProjectsList(props) {
-  const imgs = props.items;
+function ProjectsList({items}) {
+
+  const getData = (data) => {
+    if (data.length) {
+      return (
+        <ul className="projects-list">
+          {
+            data.map((d) => {
+              return <ProjectsItem key={shortid.generate()} items={d}/>
+            })
+          }
+        </ul>
+      )
+    }
+    return null;
+  }
 
   return (
     <div className="projects projects-collapse">
-      <ul className="projects-list">
-        {
-          imgs.map((item, index) => {
-            return <ProjectsItem key={index} items={item}/>
-          })
-        }
-      </ul>
+      {getData(items)}
     </div>
   )
 }
